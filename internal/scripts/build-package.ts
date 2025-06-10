@@ -1,4 +1,5 @@
 import { build } from 'esbuild'
+import vue from 'unplugin-vue/esbuild'
 import { copyFileSync, existsSync } from 'fs'
 import glob from 'glob'
 import kleur from 'kleur'
@@ -26,8 +27,8 @@ async function buildPackage({ sourcePackageDir }: { sourcePackageDir: string }) 
 	rimraf.sync(path.join(sourcePackageDir, 'dist'))
 
 	// then copy over the source .ts files
-	const sourceFiles = glob
-		.sync(path.join(sourcePackageDir, 'src/**/*.ts?(x)'))
+       const sourceFiles = glob
+               .sync(path.join(sourcePackageDir, 'src/**/*.{ts,tsx,vue}'))
 		// ignore test files
 		.filter(
 			(file) =>
@@ -104,17 +105,19 @@ async function buildLibrary({
 	define['globalThis.TLDRAW_LIBRARY_MODULES'] = JSON.stringify(info.moduleSystem)
 	define['globalThis.TLDRAW_LIBRARY_IS_BUILD'] = JSON.stringify(true)
 
-	const res = await build({
-		entryPoints: sourceFiles,
-		outdir,
-		format: info.moduleSystem,
-		outExtension: info.moduleSystem === 'esm' ? { '.js': '.mjs' } : undefined,
-		bundle: false,
-		platform: 'neutral',
-		sourcemap: true,
-		target: 'es2022',
-		define,
-	})
+       const hasVue = sourceFiles.some((f) => f.endsWith('.vue'))
+       const res = await build({
+               entryPoints: sourceFiles,
+               outdir,
+               format: info.moduleSystem,
+               outExtension: info.moduleSystem === 'esm' ? { '.js': '.mjs' } : undefined,
+               bundle: false,
+               platform: 'neutral',
+               sourcemap: true,
+               target: 'es2022',
+               define,
+               plugins: hasVue ? [vue()] : undefined,
+       })
 
 	if (info.moduleSystem === 'esm') {
 		addJsExtensions(path.join(sourcePackageDir, 'dist-esm'))

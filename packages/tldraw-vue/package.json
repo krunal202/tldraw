@@ -1,0 +1,68 @@
+{
+  "name": "@tldraw/vue",
+  "description": "Vue component wrapper for the tldraw editor.",
+  "version": "3.13.0",
+  "author": {
+    "name": "tldraw Inc.",
+    "email": "hello@tldraw.com"
+  },
+  "homepage": "https://tldraw.dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tldraw/tldraw"
+  },
+  "bugs": {
+    "url": "https://github.com/tldraw/tldraw/issues"
+  },
+  "keywords": [
+    "tldraw",
+    "drawing",
+    "app",
+    "vue",
+    "component",
+    "whiteboard"
+  ],
+  "main": "./src/index.ts",
+  "types": "./.tsbuild/index.d.ts",
+  "files": [],
+  "scripts": {
+    "test-ci": "lazy inherit",
+    "test": "yarn run -T jest",
+    "test-coverage": "lazy inherit",
+    "build": "yarn run -T tsx ../../internal/scripts/build-package.ts",
+    "build-api": "yarn run -T tsx ../../internal/scripts/build-api.ts",
+    "prepack": "yarn run -T tsx ../../internal/scripts/prepack.ts",
+    "postpack": "../../internal/scripts/postpack.sh",
+    "pack-tarball": "yarn pack",
+    "lint": "yarn run -T tsx ../../internal/scripts/lint.ts"
+  },
+  "jest": {
+    "preset": "../../internal/config/jest/node/jest-preset.js",
+    "moduleNameMapper": {
+      "^~(.*)": "<rootDir>/src/$1"
+    },
+    "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "tldraw": "workspace:*"
+  },
+  "devDependencies": {
+    "@testing-library/vue": "^8.1.0",
+    "@vue/test-utils": "^2.4.6",
+    "vue": "^3.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0",
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "typedoc": {
+    "readmeFile": "none",
+    "entryPoint": "./src/index.ts",
+    "displayName": "@tldraw/vue",
+    "tsconfig": "./tsconfig.json"
+  }
+}
