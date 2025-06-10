@@ -10,6 +10,8 @@ on:
         required: true
       CLOUDFLARE_WORKERS_TEMPLATE_REPO_SSH_DEPLOY_KEY:
         required: true
+      NUXT_TLDRAW_PLUGIN_REPO_SSH_DEPLOY_KEY:
+        required: true
 
 env:
   CI: 1
@@ -77,6 +79,37 @@ jobs:
           source-directory: 'templates/nextjs'
           destination-github-username: 'tldraw'
           destination-repository-name: 'nextjs-template'
+          user-email: steve+github.actions@tldraw.com
+          target-branch: main
+
+  publish_nuxt_plugin:
+    name: 'Nuxt plugin'
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Substitute the latest published version of tldraw
+        run: |
+          TEMPLATE=nuxt-tldraw-plugin NPM_TAG=latest
+          npm view tldraw dist-tags --json | jq -r ".$NPM_TAG" > /tmp/latest_tldraw
+          cp "templates/$TEMPLATE/package.json" /tmp/template_package.json
+          filter='
+            .dependencies."tldraw" |= $latest_tldraw |
+            .dependencies."@tldraw/vue" |= $latest_tldraw
+          '
+          jq --tab --arg latest_tldraw "$(< /tmp/latest_tldraw)" "$filter" /tmp/template_package.json > "templates/$TEMPLATE/package.json"
+
+      - name: Push nuxt plugin template
+        uses: cpina/github-action-push-to-another-repository@07c4d7b3def0a8ebe788a8f2c843a4e1de4f6900 # v1.7.2
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.NUXT_TLDRAW_PLUGIN_REPO_SSH_DEPLOY_KEY }}
+        with:
+          source-directory: 'templates/nuxt-tldraw-plugin'
+          destination-github-username: 'tldraw'
+          destination-repository-name: 'nuxt-tldraw-plugin'
           user-email: steve+github.actions@tldraw.com
           target-branch: main
 
