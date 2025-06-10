@@ -5,7 +5,7 @@ Vue bindings for the tldraw editor. This package exposes a `<TldrawVue>` compone
 ## Installation
 
 ```bash
-npm install @tldraw/vue
+npm install git+https://github.com/<your-user>/<your-repo>.git#packages/tldraw-vue
 ```
 
 Make sure you also install `tldraw` and its peer dependencies `react` and `react-dom`.
