@@ -17,14 +17,15 @@ const menus = [
 			{ caption: 'FAQ', href: '/#faq' },
 		],
 	},
-	{
-		heading: 'Documentation',
-		items: [
-			{ caption: 'Learn', href: '/quick-start' },
-			{ caption: 'Reference', href: '/reference/editor/Editor' },
-			{ caption: 'Examples', href: '/examples' },
-		],
-	},
+        {
+                heading: 'Documentation',
+                items: [
+                        { caption: 'Learn', href: '/quick-start' },
+                        { caption: 'Frameworks', href: '/frameworks/vue' },
+                        { caption: 'Reference', href: '/reference/editor/Editor' },
+                        { caption: 'Examples', href: '/examples' },
+                ],
+        },
 	{
 		heading: 'Community',
 		items: [
