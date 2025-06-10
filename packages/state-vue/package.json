@@ -1,0 +1,66 @@
+{
+  "name": "@tldraw/state-vue",
+  "description": "A tiny little drawing app (vue bindings for state).",
+  "version": "3.13.0",
+  "author": {
+    "name": "tldraw Inc.",
+    "email": "hello@tldraw.com"
+  },
+  "homepage": "https://tldraw.dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tldraw/tldraw"
+  },
+  "bugs": {
+    "url": "https://github.com/tldraw/tldraw/issues"
+  },
+  "keywords": [
+    "tldraw",
+    "drawing",
+    "app",
+    "development",
+    "whiteboard",
+    "canvas",
+    "infinite"
+  ],
+  "main": "./src/index.ts",
+  "types": "./.tsbuild/index.d.ts",
+  "files": [],
+  "scripts": {
+    "test-ci": "lazy inherit",
+    "test": "yarn run -T jest",
+    "test-coverage": "lazy inherit",
+    "build": "yarn run -T tsx ../../internal/scripts/build-package.ts",
+    "build-api": "yarn run -T tsx ../../internal/scripts/build-api.ts",
+    "prepack": "yarn run -T tsx ../../internal/scripts/prepack.ts",
+    "postpack": "../../internal/scripts/postpack.sh",
+    "pack-tarball": "yarn pack",
+    "lint": "yarn run -T tsx ../../internal/scripts/lint.ts"
+  },
+  "jest": {
+    "preset": "../../internal/config/jest/node/jest-preset.js",
+    "moduleNameMapper": {
+      "^~(.*)": "<rootDir>/src/$1"
+    },
+    "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "@tldraw/state": "workspace:*",
+    "@tldraw/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@testing-library/vue": "^8.1.0",
+    "@vue/test-utils": "^2.4.6",
+    "vue": "^3.4.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "typedoc": {
+    "readmeFile": "none",
+    "entryPoint": "./src/index.ts",
+    "displayName": "@tldraw/state-vue",
+    "tsconfig": "./tsconfig.json"
+  }
+}
