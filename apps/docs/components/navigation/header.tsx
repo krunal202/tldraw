@@ -14,9 +14,9 @@ import { ThemeSwitch } from '../common/theme-switch'
 
 const mainLinks = [
 	// { caption: 'Features', active: () => false, href: '/#features' },
-	{
-		caption: 'Docs',
-		href: '/quick-start',
+        {
+                caption: 'Docs',
+                href: '/quick-start',
 		active: (pathname: string) =>
 			[
 				'/quick-start',
@@ -27,10 +27,15 @@ const mainLinks = [
 				'/reference',
 				'/search',
 			].some((e) => pathname.startsWith(e)) && !pathname.startsWith('/search/blog'),
-	},
-	{
-		caption: 'Examples',
-		href: '/examples',
+        },
+       {
+               caption: 'Frameworks',
+               href: '/frameworks/vue',
+               active: (pathname: string) => ['/frameworks'].some((e) => pathname.startsWith(e)),
+       },
+        {
+                caption: 'Examples',
+                href: '/examples',
 		active: (pathname: string) => ['/examples'].some((e) => pathname.startsWith(e)),
 	},
 	{ caption: 'Pricing', active: () => false, href: '/#pricing' },

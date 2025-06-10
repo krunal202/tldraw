@@ -63,18 +63,25 @@
 		],
 		"sidebar_behavior": "hidden"
 	},
-	{
-		"id": "docs",
-		"title": "Learn tldraw",
-		"description": "Learn to use the tldraw SDK.",
-		"categories": [],
-		"sidebar_behavior": "show-links"
-	},
-	{
-		"id": "community",
-		"title": "Community",
-		"description": "Guides for contributing to tldraw's open source project.",
-		"categories": [],
+        {
+                "id": "docs",
+                "title": "Learn tldraw",
+                "description": "Learn to use the tldraw SDK.",
+                "categories": [],
+                "sidebar_behavior": "show-links"
+        },
+       {
+               "id": "frameworks",
+               "title": "Framework Guides",
+               "description": "Framework-specific guides for using tldraw.",
+               "categories": [],
+               "sidebar_behavior": "show-links"
+       },
+        {
+                "id": "community",
+                "title": "Community",
+                "description": "Guides for contributing to tldraw's open source project.",
+                "categories": [],
 		"sidebar_behavior": "show-links"
 	},
 	{

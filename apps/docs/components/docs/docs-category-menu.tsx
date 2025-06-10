@@ -13,16 +13,22 @@ const categoryLinks = [
 		active: (pathname: string) =>
 			['/quick-start', '/installation', '/releases'].some((e) => pathname.startsWith(e)),
 	},
-	{
-		caption: 'Guides',
-		icon: AcademicCapIcon,
-		href: '/docs/editor',
-		active: (pathname: string) => ['/docs', '/community'].some((e) => pathname.startsWith(e)),
-	},
-	{
-		caption: 'Reference',
-		icon: CommandLineIcon,
-		href: '/reference/editor/Editor',
+        {
+                caption: 'Guides',
+                icon: AcademicCapIcon,
+                href: '/docs/editor',
+                active: (pathname: string) => ['/docs', '/community'].some((e) => pathname.startsWith(e)),
+        },
+       {
+               caption: 'Frameworks',
+               icon: AcademicCapIcon,
+               href: '/frameworks/vue',
+               active: (pathname: string) => pathname.startsWith('/frameworks'),
+       },
+        {
+                caption: 'Reference',
+                icon: CommandLineIcon,
+                href: '/reference/editor/Editor',
 		active: (pathname: string) => pathname.startsWith('/reference'),
 	},
 	{

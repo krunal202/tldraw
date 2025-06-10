@@ -1,0 +1,54 @@
+---
+title: Vue
+status: published
+author: steveruizok
+date: 6/10/2025
+order: 0
+keywords:
+  - vue
+  - nuxt
+  - frameworks
+  - tldraw
+---
+
+Use `@tldraw/vue` to integrate the tldraw editor in Vue and Nuxt applications.
+
+## Installation
+
+Install the package along with `tldraw` and its peer dependencies:
+
+```bash
+npm install @tldraw/vue tldraw react react-dom
+```
+
+## Usage
+
+Import the component and stylesheet, then use `<TldrawVue>` anywhere in your Vue template.
+
+```vue
+<script setup lang="ts">
+import { TldrawVue } from '@tldraw/vue'
+import 'tldraw/tldraw.css'
+</script>
+
+<template>
+  <TldrawVue />
+</template>
+```
+
+## Nuxt plugin
+
+When using Nuxt, register the component globally via a plugin:
+
+```ts
+// plugins/tldraw.client.ts
+import { defineNuxtPlugin } from '#app'
+import { TldrawVue } from '@tldraw/vue'
+import 'tldraw/tldraw.css'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('TldrawVue', TldrawVue)
+})
+```
+
+Now you can use `<TldrawVue />` in any component of your Nuxt project.
