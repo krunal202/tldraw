@@ -34,9 +34,6 @@ Learn more at [tldraw.dev](https://tldraw.dev).
 
 ## Vue & Nuxt
 
-Use the Vue bindings to integrate the editor in Vue or Nuxt3 projects. This
-package is not yet published on npm, so install it directly from GitHub.
-
 ### Installation
 
 ```bash
@@ -44,6 +41,9 @@ npm install git+https://github.com/<your-user>/<your-repo>.git#packages/tldraw-v
   tldraw react react-dom
 ```
 Replace `<your-user>/<your-repo>` with the GitHub repository hosting the Vue bindings.
+=======
+npm install @tldraw/vue tldraw react react-dom
+```
 
 ### Usage
 
