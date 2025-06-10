@@ -32,6 +32,47 @@ export default function App() {
 
 Learn more at [tldraw.dev](https://tldraw.dev).
 
+## Vue & Nuxt
+
+Use the Vue bindings to integrate the editor in Vue or Nuxt3 projects. This
+package is not yet published on npm, so install it directly from GitHub.
+
+### Installation
+
+```bash
+npm install git+https://github.com/<your-user>/<your-repo>.git#packages/tldraw-vue \
+  tldraw react react-dom
+```
+Replace `<your-user>/<your-repo>` with the GitHub repository hosting the Vue bindings.
+
+### Usage
+
+```vue
+<script setup lang="ts">
+import { TldrawVue } from '@tldraw/vue'
+import 'tldraw/tldraw.css'
+</script>
+
+<template>
+  <TldrawVue />
+</template>
+```
+
+### Nuxt plugin
+
+Register the component globally in Nuxt via a plugin:
+
+```ts
+// plugins/tldraw.client.ts
+import { defineNuxtPlugin } from '#app'
+import { TldrawVue } from '@tldraw/vue'
+import 'tldraw/tldraw.css'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('TldrawVue', TldrawVue)
+})
+```
+
 ## Local development
 
 The local development server will run our examples app. The basic example will show any changes you've made to the codebase.
